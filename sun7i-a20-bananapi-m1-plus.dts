@@ -841,12 +841,21 @@
 			clock-names = "ahb", "mod";
 			dmas = <0x20 0x1 0x1b 0x20 0x1 0x1a>;
 			dma-names = "rx", "tx";
-			status = "disabled";
+			status = "okay";
 			#address-cells = <0x1>;
 			#size-cells = <0x0>;
 			num-cs = <0x4>;
 			linux,phandle = <0x5d>;
 			phandle = <0x5d>;
+			pinctrl-names = "default";
+			pinctrl-0 = <0x80 0x81 0x82>;
+
+			spidev@0 {
+				compatible = "spidev";
+				status = "okay";
+				reg = <0x0>;
+				spi-max-frequency = <0xf4240>;
+			};
 		};
 
 		spi@01c06000 {
@@ -1279,6 +1288,7 @@
 			spi0_cs0@0 {
 				pins = "PI10";
 				function = "spi0";
+				bias-pull-up;
 				linux,phandle = <0x81>;
 				phandle = <0x81>;
 			};
@@ -1286,6 +1296,7 @@
 			spi0_cs1@0 {
 				pins = "PI14";
 				function = "spi0";
+				bias-pull-up;
 				linux,phandle = <0x82>;
 				phandle = <0x82>;
 			};
